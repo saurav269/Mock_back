@@ -56,10 +56,10 @@ const { UserModel } = require("../model/user.Model")
       })
 
 
-      userRouter.get("/getProfile", async (req, res) => {
-        const id= req.params.id;
+      userRouter.get("/getProfile/:email", async (req, res) => {
+        const email = req.params.email;
         try {
-          const user = await UserModel.findOne({ _id: id });
+          const user = await UserModel.findOne({ email: email });
       
           if (user) {
             res.send(user);
